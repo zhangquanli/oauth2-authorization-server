@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    username: ENC(UDVCRub0R34K7mcV7zyrmjn48cCb+l5P)
+    password: ENC(kIQTs9x2QXYt6SvCZ27qPT/6Orl68hJD)

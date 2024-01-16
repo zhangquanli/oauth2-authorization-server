@@ -1,0 +1,9 @@
+server:
+  port: 9300
+spring:
+  profiles:
+    active: prod
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator

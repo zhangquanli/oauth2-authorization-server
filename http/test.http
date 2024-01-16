@@ -1,0 +1,28 @@
+### 在浏览器网页打开此地址
+GET http://127.0.0.1:9300/oauth2/authorize?response_type=code&scope=openid%20profile%20user&client_id=oidc-client&
+    state=xyz&redirect_uri=http%3A%2F%2F127.0.0.1%3A8080%2Flogin%2Foauth2%2Fcode%2Foidc-client
+
+### authorization_code
+POST http://127.0.0.1:9300/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = oidc-client &
+client_secret = secret &
+grant_type = authorization_code &
+redirect_uri = http://127.0.0.1:8080/login/oauth2/code/oidc-client &
+code = ceXP5dDfrEH0hsCdhckixbnaBadhBV9lpIReMKMJxDuzPTaMMdeRXPFXmMgXDVx5QXzmmyBCZ7CkCYUBexfRHKTpmEkxloI6FZ5buBWQWRyAn4oz7MZN6U4bIfqqkJnw
+
+
+### refresh_token
+POST http://127.0.0.1:9300/oauth2/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = oidc-client &
+client_secret = secret &
+grant_type = refresh_token &
+refresh_token = p7tQ7YF3Ym-X69T7fxPsX6-HBIouP1WZBBZjaerBrfHxu0Uwb8FzrtZuuQpUCYUs_aRaLzhI3hAqrkzZLyScT9jNoy2Fy9XFmyfe33JSywogzGVbwZWG5j6KJdvHyhqw
+
+
+### userinfo
+GET http://127.0.0.1:9300/userinfo
+Authorization: Bearer eyJraWQiOiIxYWFjMDAwYy1hZDg1LTRmNTEtOWZlZi01MzZkYjZhOTFlZjgiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ1c2VybmFtZSIsImF1ZCI6Im9pZGMtY2xpZW50IiwibmJmIjoxNzA0ODcxNjcxLCJzY29wZSI6WyJvcGVuaWQiLCJwcm9maWxlIiwidXNlciJdLCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjkzMDAiLCJleHAiOjE3MDQ4NzE5NzEsImlhdCI6MTcwNDg3MTY3MSwianRpIjoiMjllMWRkYjgtZTMwMS00NDQ4LTlhYWQtZjllYjViMDEzMzZjIn0.Wu3ZoNogebk4F1KtrQg3eL0ib8SBRB-CBtOAsMgUYz9juaw35iFX7DnTtQDXahyi6HdQjhxLnCqD6Q5rLHGSHtq2LPBqsGniHTSCA0gakrQic9n5xw4tsvSobgsEOCqNHUm1eByKlI_8-oHZP6l8E1k5MrHlswSfCsxnXTpZNPMOEYa7i0Jm9CWgmNP1KOA_nEgd0HVtykbACmu7ZwvHHYf5fwAYoUGF8omqM9DpoWCWcRNyGDdduBAXAgvaHO6bmv6QqF1PYgEfRO2TnvZboRaDN3AfgX70MWVcEXxxefUX-B_fgoYPwDCOGFolGTsCynALPWIXRBD23ssgq-yQDw
