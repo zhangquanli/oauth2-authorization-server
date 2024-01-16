@@ -44,5 +44,5 @@ jobs:
         run: |
           echo "$SSH_PRIVATE_KEY" > ssh_key
           chmod 600 ssh_key
-          ssh -i ssh_key -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "docker pull zhangquanli/oauth2-authorization-server; docker run --rm --name oauth2-authorization-server -p 9300:9300 -d zhangquanli/oauth2-authorization-server"
+          ssh -i ssh_key -o StrictHostKeyChecking=no $SSH_USERNAME@$SSH_HOST "docker stop oauth2-authorization-server; docker rm oauth2-authorization-server; docker pull zhangquanli/oauth2-authorization-server; docker run --rm --name oauth2-authorization-server -p 9300:9300 -d zhangquanli/oauth2-authorization-server"
 
