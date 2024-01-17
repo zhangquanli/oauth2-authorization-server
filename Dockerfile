@@ -1,8 +1,8 @@
 FROM eclipse-temurin:17
+ARG JASYPT_ENCRYPTOR_PASSWORD
+ENV PASSWORD=${JASYPT_ENCRYPTOR_PASSWORD}
+
 RUN mkdir "/java"
 ADD target/oauth2-authorization-server.jar /java/oauth2-authorization-server.jar
-ADD entrypoint.sh /java/entrypoint.sh
-RUN chmod +x /java/entrypoint.sh
 EXPOSE 9300
-ARG JASYPT_ENCRYPTOR_PASSWORD=""
-ENTRYPOINT ["/java/entrypoint.sh"]
+ENTRYPOINT java -jar /java/oauth2-authorization-server.jar --jasypt.encryptor.password=${PASSWORD}
