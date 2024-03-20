@@ -58,11 +58,10 @@ public class SecurityConfig {
     @Bean
     @Order(2)
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests((authorize) -> authorize.anyRequest().authenticated());
-
-        // Form login handles the redirect to login page from the authorization server filter chain
-        http.formLogin(Customizer.withDefaults());
-
+        http.authorizeHttpRequests(authorize -> authorize
+                .requestMatchers("/css/*", "/img/**", "/webjars/**").permitAll()
+                .anyRequest().authenticated());
+        http.formLogin(form -> form.loginPage("/login").permitAll());
         return http.build();
     }
 

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>authorization-server</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body>
+<div class="form-div">
+  <form class="form" method="post" action="/login">
+    <div class="input-group">
+      <label class="input-group-text" for="username">账号</label>
+      <input id="username" type="text" name="username" class="form-control" placeholder="请输入账号" required>
+    </div>
+    <div class="input-group">
+      <label class="input-group-text" for="password">密码</label>
+      <input id="password" type="password" name="password" class="form-control" placeholder="请输入密码" required>
+    </div>
+    <input name="_csrf" type="hidden" th:value="${_csrf.getToken()}">
+    <button type="submit" class="btn btn-primary">登录</button>
+  </form>
+</div>
+<!-- 引入Bootstrap的JavaScript文件 -->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
