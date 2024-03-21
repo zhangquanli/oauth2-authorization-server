@@ -6,9 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.zhangquanli.server.authorization.entity.Client;
 import com.github.zhangquanli.server.authorization.repository.ClientRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.jasypt.encryption.pbe.PBEStringCleanablePasswordEncryptor;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -168,20 +166,21 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     @Override
     public void afterPropertiesSet() {
         String clientId = "oidc-client";
+        String clientSecret = "{noop}secret";
         ClientSettings clientSettings = ClientSettings.builder()
                 .requireAuthorizationConsent(true)
                 .build();
 
         RegisteredClient registeredClient = RegisteredClient.withId(clientId)
                 .clientId(clientId)
-                .clientSecret("{noop}secret")
+                .clientSecret(clientSecret)
                 .clientName("测试")
                 .clientIdIssuedAt(Instant.now())
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_POST)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://127.0.0.1:8080/login/oauth2/code/oidc-client")
-                .postLogoutRedirectUri("http://127.0.0.1:8080/")
+                .redirectUri("http://127.0.0.1:9324/login/oauth2/code")
+                .postLogoutRedirectUri("http://127.0.0.1:9324/")
                 .scope(OidcScopes.OPENID)
                 .scope(OidcScopes.PROFILE)
                 .scope("user")

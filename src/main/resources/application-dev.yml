@@ -3,3 +3,6 @@ spring:
     url: jdbc:postgresql://47.108.202.189:5432/postgres
     username: ENC(UDVCRub0R34K7mcV7zyrmjn48cCb+l5P)
     password: ENC(kIQTs9x2QXYt6SvCZ27qPT/6Orl68hJD)
+logging:
+  level:
+    org.springframework.security: trace
